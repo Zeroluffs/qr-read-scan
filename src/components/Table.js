@@ -4,8 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.css";
 import "react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css";
 import paginationFactory from "react-bootstrap-table2-paginator";
+import { useNavigate } from "react-router-dom";
 
 export function Table() {
+  const navigate = useNavigate();
+
   const products = [
     { id: 1, name: "George", animal: "Monkey" },
     { id: 2, name: "Jeffrey", animal: "Giraffe" },
@@ -58,7 +61,15 @@ export function Table() {
   return (
     <div>
       <h5>React Bootstrap Table Next with Sorting and Pagination</h5>
-
+      <button
+        type="submit"
+        className="btn btn-primary"
+        onClick={() => {
+          navigate("/reader");
+        }}
+      >
+        QR Reader
+      </button>
       <BootstrapTable
         bootstrap4
         keyField="id"
