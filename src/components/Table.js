@@ -1,6 +1,7 @@
 import React from "react";
 import BootstrapTable from "react-bootstrap-table-next";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-bootstrap-table-next/dist/react-bootstrap-table2.css";
 
 export function Table() {
   const products = [
@@ -24,9 +25,10 @@ export function Table() {
   ];
   return (
     <div>
-      <h3>React Bootstrap Table 2</h3>
+      <h5>React Bootstrap Table Next with Sorting</h5>
 
       <BootstrapTable
+        bootstrap4
         keyField="id"
         data={products}
         columns={columns}
