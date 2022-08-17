@@ -11,9 +11,9 @@ export function Table() {
   ];
 
   const columns = [
-    { dataField: "id", text: "Id" },
-    { dataField: "name", text: "Name" },
-    { dataField: "animal", text: "Animal" },
+    { dataField: "id", text: "Id", sort: true },
+    { dataField: "name", text: "Name", sort: true },
+    { dataField: "animal", text: "Animal", sort: true },
   ];
 
   return (
