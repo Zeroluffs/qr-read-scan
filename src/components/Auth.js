@@ -27,9 +27,7 @@ export function Auth(props) {
               Submit
             </button>
           </div>
-          <p className="text-center mt-2">
-            Forgot <a href="#">password?</a>
-          </p>
+          <p className="text-center mt-2">Forgot password?</p>
         </div>
       </form>
     </div>
