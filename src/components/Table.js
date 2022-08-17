@@ -16,11 +16,22 @@ export function Table() {
     { dataField: "animal", text: "Animal", sort: true },
   ];
 
+  const defaultSorted = [
+    {
+      dataField: "name",
+      order: "desc",
+    },
+  ];
   return (
     <div>
       <h3>React Bootstrap Table 2</h3>
 
-      <BootstrapTable keyField="id" data={products} columns={columns} />
+      <BootstrapTable
+        keyField="id"
+        data={products}
+        columns={columns}
+        defaultSorted={defaultSorted}
+      />
     </div>
   );
 }
