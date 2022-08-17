@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Auth(props) {
+export function Auth() {
   return (
     <div className="Auth-form-container">
       <form className="Auth-form">
