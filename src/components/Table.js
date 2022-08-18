@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BootstrapTable from "react-bootstrap-table-next";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.css";
 import "react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+const api = axios.create({
+  baseURL: `http://localhost:3000/api`,
+});
 
 export function Table() {
-  console.log(JSON.parse(localStorage.getItem("user")));
   const navigate = useNavigate();
-
+  const [companies, setCompanies] = useState([]);
   const products = [
     { id: 1, name: "George", animal: "Monkey" },
     { id: 2, name: "Jeffrey", animal: "Giraffe" },
@@ -29,9 +33,9 @@ export function Table() {
   ];
 
   const columns = [
-    { dataField: "id", text: "Id", sort: true },
     { dataField: "name", text: "Name", sort: true },
-    { dataField: "animal", text: "Animal", sort: true },
+    { dataField: "company", text: "Company", sort: true },
+    { dataField: "address", text: "Address", sort: true },
   ];
 
   const defaultSorted = [
@@ -40,6 +44,24 @@ export function Table() {
       order: "desc",
     },
   ];
+
+  useEffect(() => {
+    api
+      .get("/company")
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res);
+          setCompanies(res.data);
+        } else {
+          const error = new Error(res.error);
+          throw error;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Error");
+      });
+  }, []);
 
   const pagination = paginationFactory({
     page: 2,
@@ -73,8 +95,8 @@ export function Table() {
       </button>
       <BootstrapTable
         bootstrap4
-        keyField="id"
-        data={products}
+        keyField="_id"
+        data={companies}
         columns={columns}
         defaultSorted={defaultSorted}
         pagination={pagination}

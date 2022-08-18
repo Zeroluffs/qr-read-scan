@@ -18,7 +18,7 @@ export function CodeQR() {
           setLat(position.coords.latitude);
           setLng(position.coords.longitude);
           let user = localStorage.getItem("user");
-          user = JSON.parse(user)
+          user = JSON.parse(user);
           console.log(user);
           let updatedValue = {
             userid: user._id,
@@ -39,6 +39,7 @@ export function CodeQR() {
 
   useEffect(() => {
     getLocation();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
