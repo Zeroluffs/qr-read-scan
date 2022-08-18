@@ -56,7 +56,7 @@ export function CodeQR() {
 
           navigate("/");
         }}
-        className="btn btn-primary"
+        className="btn btn-secondary"
       >
         Exit
       </button>

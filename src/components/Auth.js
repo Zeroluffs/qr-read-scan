@@ -24,6 +24,7 @@ export function Auth() {
           console.log(res);
           localStorage.setItem("user", JSON.stringify(res.data.user));
           localStorage.setItem("role", JSON.stringify(res.data.user.role));
+          localStorage.setItem("id", JSON.stringify(res.data.user._id));
           navigate("/main");
         } else {
           const error = new Error(res.error);
