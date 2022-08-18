@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import QRCode from "react-qr-code";
+import  "../App.css"
 
 export function CodeQR() {
   const [lat, setLat] = useState(null);
@@ -43,7 +44,7 @@ export function CodeQR() {
   }, []);
 
   return (
-    <div>
+    <div className="qrCode">
       <QRCode value={JSON.stringify(userInfo)} />
     </div>
   );

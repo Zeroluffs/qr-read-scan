@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { QrReader } from "react-qr-reader";
+import { useNavigate } from "react-router-dom";
 
 export function QRReader(props) {
+  const navigate = useNavigate();
+
   const [data, setData] = useState("No result");
 
   return (
@@ -14,6 +17,7 @@ export function QRReader(props) {
           if (!!result) {
             setData(result?.text);
             window.alert("found");
+            navigate("/auth");
           }
 
           if (!!error) {

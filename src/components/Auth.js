@@ -23,7 +23,8 @@ export function Auth() {
         if (res.status === 200) {
           console.log(res);
           localStorage.setItem("user", JSON.stringify(res.data.user));
-          navigate("/table");
+          localStorage.setItem("role", JSON.stringify(res.data.user.role));
+          navigate("/main");
         } else {
           const error = new Error(res.error);
           throw error;
