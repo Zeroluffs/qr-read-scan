@@ -13,6 +13,7 @@ export function QRReader(props) {
         onResult={(result, error) => {
           if (!!result) {
             setData(result?.text);
+            window.alert("found");
           }
 
           if (!!error) {
