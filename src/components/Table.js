@@ -7,6 +7,7 @@ import paginationFactory from "react-bootstrap-table2-paginator";
 import { useNavigate } from "react-router-dom";
 
 export function Table() {
+  console.log(JSON.parse(localStorage.getItem("user")));
   const navigate = useNavigate();
 
   const products = [
