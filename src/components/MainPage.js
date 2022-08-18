@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "./Table";
 import { CodeQR } from "./QRCode";
 
-const role = localStorage.getItem("role");
 export function MainPage() {
+  const [role, setRole] = useState("");
   let mainComponent;
   if (role === "admin") {
     mainComponent = <Table />;
@@ -11,5 +11,9 @@ export function MainPage() {
     mainComponent = <CodeQR />;
   }
 
+  useEffect(() => {
+    const roleStr = localStorage.getItem("role");
+    setRole(JSON.parse(roleStr));
+  }, []);
   return <div>{mainComponent}</div>;
 }

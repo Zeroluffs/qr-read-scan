@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import QRCode from "react-qr-code";
-import  "../App.css"
+import "../App.css";
+import { useNavigate } from "react-router-dom";
 
 export function CodeQR() {
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
   const [, setStatus] = useState(null);
   const [userInfo, setUserInfo] = useState({});
+  const navigate = useNavigate();
 
   const getLocation = () => {
     if (!navigator.geolocation) {
@@ -46,6 +48,18 @@ export function CodeQR() {
   return (
     <div className="qrCode">
       <QRCode value={JSON.stringify(userInfo)} />
+      <button
+        type="submit"
+        onClick={() => {
+          localStorage.removeItem("role");
+          localStorage.removeItem("user");
+
+          navigate("/");
+        }}
+        className="btn btn-primary"
+      >
+        Exit
+      </button>
     </div>
   );
 }

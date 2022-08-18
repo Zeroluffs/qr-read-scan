@@ -6,6 +6,7 @@ import "react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.m
 import paginationFactory from "react-bootstrap-table2-paginator";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../App.css";
 
 const api = axios.create({
   baseURL: `http://localhost:3000/api`,
@@ -46,7 +47,7 @@ export function Table() {
   }, []);
 
   const pagination = paginationFactory({
-    page: 2,
+    page: 1,
     sizePerPage: 5,
     lastPageText: ">>",
     firstPageText: "<<",
@@ -66,15 +67,18 @@ export function Table() {
   return (
     <div>
       <h5>React Bootstrap Table Next with Sorting and Pagination</h5>
-      <button
-        type="submit"
-        className="btn btn-primary"
-        onClick={() => {
-          navigate("/reader");
-        }}
-      >
-        QR Reader
-      </button>
+      <div className="qrReaderBtn">
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={() => {
+            navigate("/reader");
+          }}
+        >
+          QR Reader
+        </button>
+      </div>
+
       <BootstrapTable
         bootstrap4
         keyField="_id"
