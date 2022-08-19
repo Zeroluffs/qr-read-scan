@@ -42,7 +42,6 @@ export function Table() {
       .get("/company")
       .then((res) => {
         if (res.status === 200) {
-          console.log(res);
           setCompanies(res.data);
         } else {
           const error = new Error(res.error);
@@ -74,8 +73,7 @@ export function Table() {
     },
   });
   return (
-    <div>
-      <h5>React Bootstrap Table Next with Sorting and Pagination</h5>
+    <div className="mainContainer">
       <div className="qrReaderBtn">
         <button
           type="submit"
