@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { api } from "../utils";
 
-const api = axios.create({
-  baseURL: `https://techtest-backend.herokuapp.com/api`,
-});
+
+
 
 export function Auth() {
   const navigate = useNavigate();

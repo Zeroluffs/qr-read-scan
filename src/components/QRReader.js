@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { QrReader } from "react-qr-reader";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { api } from "../utils";
 
-const api = axios.create({
-  baseURL: `https://techtest-backend.herokuapp.com/api`,
-});
 export function QRReader(props) {
   const navigate = useNavigate();
 
@@ -32,7 +29,7 @@ export function QRReader(props) {
                 if (res.data) {
                   localStorage.setItem("found", res.data);
                   navigate("/main");
-                }else{
+                } else {
                   localStorage.setItem("found", res.data);
                   navigate("/main");
                 }

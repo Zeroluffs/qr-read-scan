@@ -5,12 +5,8 @@ import "react-bootstrap-table-next/dist/react-bootstrap-table2.css";
 import "react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "../App.css";
-
-const api = axios.create({
-  baseURL: `https://techtest-backend.herokuapp.com/api`,
-});
+import { api } from "../utils";
 
 export function Table() {
   const navigate = useNavigate();
