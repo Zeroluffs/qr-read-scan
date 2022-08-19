@@ -53,7 +53,7 @@ export function CodeQR() {
         onClick={() => {
           localStorage.removeItem("role");
           localStorage.removeItem("user");
-
+          localStorage.removeItem("id")
           navigate("/");
         }}
         className="btn btn-secondary"
