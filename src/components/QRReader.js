@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: `http://localhost:3000/api`,
+  baseURL: `https://techtest-backend.herokuapp.com/api`,
 });
 export function QRReader(props) {
   const navigate = useNavigate();
 
-  const [data, setData] = useState("No result");
-  const [array, setArray] = useState({});
+  const [, setData] = useState("No result");
+  const [, setArray] = useState({});
 
   return (
     <>
@@ -25,18 +25,23 @@ export function QRReader(props) {
               ...userInfo,
               ...JSON.parse(result?.text),
             }));
-            const userid = "62febfe45ae8a485a6b8ab77"
+            const object = JSON.parse(result?.text);
             api
-              .post("/company/" + userid)
+              .get("/company/" + object.userid)
               .then((res) => {
-                setData(res.data);
+                if (res.data) {
+                  localStorage.setItem("found", res.data);
+                  navigate("/main");
+                }else{
+                  localStorage.setItem("found", res.data);
+                  navigate("/main");
+                }
               })
               .catch((err) => {
                 console.log(err);
-                alert("Error Logging in please try again");
+                alert("Error");
+                navigate("/main");
               });
-            // window.alert("found");
-            // navigate("/auth");
           }
 
           if (!!error) {
@@ -45,7 +50,6 @@ export function QRReader(props) {
         }}
         style={{ width: "100%" }}
       />
-      <p>{data}</p>
     </>
   );
 }

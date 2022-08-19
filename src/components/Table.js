@@ -9,7 +9,7 @@ import axios from "axios";
 import "../App.css";
 
 const api = axios.create({
-  baseURL: `http://localhost:3000/api`,
+  baseURL: `https://techtest-backend.herokuapp.com/api`,
 });
 
 export function Table() {
@@ -29,6 +29,15 @@ export function Table() {
   ];
 
   useEffect(() => {
+    if ("found" in localStorage) {
+      const found = JSON.parse(localStorage.getItem("found"));
+      if (found) {
+        window.alert("found");
+      } else {
+        window.alert("Not found");
+      }
+    }
+
     api
       .get("/company")
       .then((res) => {
@@ -77,6 +86,23 @@ export function Table() {
         >
           QR Reader
         </button>
+        <div className="exitBtn">
+          <button
+            type="submit"
+            style={{ marginLeft: "8px" }}
+            className="btn btn-secondary"
+            onClick={() => {
+              localStorage.removeItem("role");
+              localStorage.removeItem("user");
+              localStorage.removeItem("id");
+              localStorage.removeItem("found");
+
+              navigate("/");
+            }}
+          >
+            Exit
+          </button>
+        </div>
       </div>
 
       <BootstrapTable

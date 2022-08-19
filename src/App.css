@@ -50,4 +50,9 @@ label {
 .qrReaderBtn {
   display: flex;
   justify-content: center;
+  margin-bottom: 12px;
+}
+
+.exitBtn {
+  margin-right: 32px;
 }
